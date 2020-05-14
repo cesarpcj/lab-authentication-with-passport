@@ -38,4 +38,20 @@ authenticationRouter.post("/sign-out", (req, res, next) => {
   res.redirect("/");
 });
 
+authenticationRouter.get(
+  "/github",
+  passport.authenticate("github", {
+    successRedirect: "/",
+    failureRedirect: "/error",
+  })
+);
+
+authenticationRouter.get(
+  "/githubcb",
+  passport.authenticate("github", {
+    successRedirect: "/",
+    failureRedirect: "/error",
+  })
+);
+
 module.exports = authenticationRouter;
